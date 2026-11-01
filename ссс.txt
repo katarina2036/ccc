@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>⚡ Хогвартс | Фельцан Екатерина</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: Georgia, 'Times New Roman', serif;
+    background: #0a0a15;
+    color: #f4e4c1;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  /* Волшебный звёздный фон */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background:
+      radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,0.8), transparent),
+      radial-gradient(2px 2px at 60% 70%, rgba(255,255,255,0.6), transparent),
+      radial-gradient(1px 1px at 50% 50%, rgba(255,255,255,0.9), transparent),
+      radial-gradient(1px 1px at 80% 10%, rgba(255,255,255,0.7), transparent),
+      radial-gradient(2px 2px at 90% 60%, rgba(201,162,39,0.6), transparent),
+      radial-gradient(1px 1px at 33% 80%, rgba(255,255,255,0.5), transparent),
+      radial-gradient(1px 1px at 15% 65%, rgba(255,255,255,0.6), transparent),
+      radial-gradient(2px 2px at 75% 40%, rgba(201,162,39,0.5), transparent);
+    background-size: 200% 200%;
+    animation: twinkle 8s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+  }
+
+  /* Магический туман */
+  body::after {
+    content: '';
+    position: fixed;
+    bottom: 0; left: 0;
+    width: 100%; height: 40%;
+    background: radial-gradient(ellipse at bottom, rgba(201,162,39,0.08), transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  header, nav, main, footer { position: relative; z-index: 1; }
+
+  /* Шапка */
+  header {
+    text-align: center;
+    padding: 50px 15px 30px;
+    background: linear-gradient(180deg, rgba(26,26,46,0.9) 0%, rgba(10,10,21,0.6) 100%);
+    border-bottom: 2px solid transparent;
+    border-image: linear-gradient(90deg, transparent, #c9a227, #f4e4c1, #c9a227, transparent) 1;
+    position: relative;
+  }
+
+  header h1 {
+    color: #c9a227;
+    font-size: 2.8em;
+    letter-spacing: 4px;
+    text-shadow:
+      0 0 10px rgba(201,162,39,0.8),
+      0 0 30px rgba(201,162,39,0.5),
+      0 0 60px rgba(201,162,39,0.3);
+    animation: glow 3s ease-in-out infinite alternate;
+  }
+
+  @keyframes glow {
+    from { text-shadow: 0 0 10px rgba(201,162,39,0.8), 0 0 30px rgba(201,162,39,0.5); }
+    to { text-shadow: 0 0 20px rgba(201,162,39,1), 0 0 50px rgba(201,162,39,0.7), 0 0 80px rgba(201,162,39,0.4); }
+  }
+
+  header p {
+    color: #b8a882;
+    margin-top: 12px;
+    font-style: italic;
+    font-size: 0.95em;
+    letter-spacing: 1px;
+  }
+
+  .author {
+    color: #c9a227;
+    margin-top: 18px;
+    font-size: 0.95em;
+    letter-spacing: 1px;
+  }
+  .author strong {
+    color: #f4e4c1;
+    text-shadow: 0 0 10px rgba(244,228,193,0.5);
+  }
+
+  /* Навигация */
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    padding: 20px 15px;
+    background: rgba(26,26,46,0.7);
+    backdrop-filter: blur(10px);
+  }
+
+  nav button {
+    background: rgba(35,35,63,0.6);
+    border: 1px solid rgba(201,162,39,0.4);
+    color: #c9a227;
+    padding: 10px 22px;
+    font-family: inherit;
+    font-size: 0.9em;
+    cursor: pointer;
+    border-radius: 25px;
+    transition: all 0.4s;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  nav button::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 0; height: 0;
+    background: radial-gradient(circle, rgba(201,162,39,0.3), transparent);
+    transform: translate(-50%, -50%);
+    transition: width 0.5s, height 0.5s;
+    border-radius: 50%;
+  }
+
+  nav button:hover::before {
+    width: 300px;
+    height: 300px;
+  }
+
+  nav button:hover, nav button.active {
+    background: linear-gradient(135deg, #c9a227, #e8c547);
+    color: #0a0a15;
+    border-color: #f4e4c1;
+    box-shadow:
+      0 0 15px rgba(201,162,39,0.6),
+      0 0 30px rgba(201,162,39,0.3);
+    transform: translateY(-2px);
+  }
+
+  nav button span { position: relative; z-index: 1; }
+
+  /* Основной контент */
+  main {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 40px 15px;
+  }
+
+  section { display: none; }
+  section.active {
+    display: block;
+    animation: fadeIn 0.6s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  h2 {
+    color: #c9a227;
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 1.7em;
+    letter-spacing: 2px;
+    text-shadow: 0 0 15px rgba(201,162,39,0.4);
+    position: relative;
+    display: inline-block;
+    width: 100%;
+  }
+
+  h2::after {
+    content: '✦';
+    display: block;
+    color: #c9a227;
+    font-size: 0.7em;
+    margin-top: 8px;
+    opacity: 0.7;
+  }
+
+  /* Магическая коробка */
+  .box {
+    background: linear-gradient(135deg, rgba(26,26,46,0.9), rgba(35,35,63,0.8));
+    border: 1px solid rgba(201,162,39,0.3);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow:
+      0 0 30px rgba(201,162,39,0.1),
+      inset 0 0 30px rgba(201,162,39,0.03);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .box::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: conic-gradient(from 0deg, transparent, rgba(201,162,39,0.05), transparent, rgba(201,162,39,0.05), transparent);
+    animation: rotate 20s linear infinite;
+    pointer-events: none;
+  }
+
+  @keyframes rotate {
+    to { transform: rotate(360deg); }
+  }
+
+  .box > * { position: relative; z-index: 1; }
+
+  /* Вопросы */
+  .question {
+    font-size: 1.15em;
+    margin-bottom: 20px;
+    line-height: 1.6;
+    color: #f4e4c1;
+    text-shadow: 0 0 10px rgba(244,228,193,0.2);
+  }
+
+  .answers {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .answers button {
+    text-align: left;
+    padding: 14px 18px;
+    background: rgba(35,35,63,0.7);
+    border: 1px solid rgba(201,162,39,0.2);
+    color: #f4e4c1;
+    font-family: inherit;
+    font-size: 0.95em;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+    line-height: 1.4;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .answers button::before {
+    content: '✦';
+    position: absolute;
+    left: -30px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #c9a227;
+    transition: left 0.3s;
+    font-size: 0.8em;
+  }
+
+  .answers button:hover {
+    border-color: #c9a227;
+    background: rgba(45,45,74,0.9);
+    padding-left: 40px;
+    box-shadow: 0 0 20px rgba(201,162,39,0.2);
+  }
+
+  .answers button:hover::before {
+    left: 15px;
+  }
+
+  /* Прогресс */
+  .progress {
+    margin-top: 20px;
+    height: 8px;
+    background: rgba(51,51,51,0.5);
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid rgba(201,162,39,0.2);
+  }
+
+  .progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #c9a227, #e8c547, #c9a227);
+    width: 0%;
+    transition: width 0.4s;
+    box-shadow: 0 0 15px rgba(201,162,39,0.8);
+  }
+
+  .counter {
+    text-align: center;
+    color: #b8a882;
+    margin-top: 10px;
+    font-size: 0.85em;
+    letter-spacing: 1px;
+  }
+
+  /* Результаты */
+  .result {
+    text-align: center;
+    padding: 20px 10px;
+  }
+
+  .crest {
+    font-size: 5em;
+    margin-bottom: 15px;
+    filter: drop-shadow(0 0 25px rgba(201,162,39,0.6));
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .result-title {
+    font-size: 2.2em;
+    font-weight: bold;
+    margin: 15px 0;
+    letter-spacing: 3px;
+  }
+
+  .result-desc {
+    color: #ccc;
+    line-height: 1.7;
+    margin: 20px 0;
+    font-size: 1em;
+  }
+
+  .scores {
+    color: #b8a882;
+    font-size: 0.9em;
+    margin: 15px 0;
+    letter-spacing: 1px;
+  }
+
+  /* Кнопки */
+  .btn {
+    background: linear-gradient(135deg, #c9a227, #e8c547);
+    color: #0a0a15;
+    border: none;
+    padding: 12px 30px;
+    font-family: inherit;
+    font-size: 0.95em;
+    font-weight: bold;
+    border-radius: 25px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.3s;
+    letter-spacing: 1px;
+    box-shadow: 0 0 20px rgba(201,162,39,0.4);
+  }
+
+  .btn:hover {
+    transform: translateY(-2px);
+    box-shadow:
+      0 0 25px rgba(201,162,39,0.7),
+      0 0 50px rgba(201,162,39,0.4);
+  }
+
+  /* Цвета факультетов со свечением */
+  .gryffindor {
+    color: #ff6b6b;
+    text-shadow: 0 0 20px rgba(255,107,107,0.6), 0 0 40px rgba(255,107,107,0.3);
+  }
+  .slytherin {
+    color: #4ecdc4;
+    text-shadow: 0 0 20px rgba(78,205,196,0.6), 0 0 40px rgba(78,205,196,0.3);
+  }
+  .ravenclaw {
+    color: #6b8cce;
+    text-shadow: 0 0 20px rgba(107,140,206,0.6), 0 0 40px rgba(107,140,206,0.3);
+  }
+  .hufflepuff {
+    color: #ffd93d;
+    text-shadow: 0 0 20px rgba(255,217,61,0.6), 0 0 40px rgba(255,217,61,0.3);
+  }
+
+  /* Патронус */
+  .patronus-emoji {
+    font-size: 5em;
+    color: #9ad0ff;
+    text-shadow:
+      0 0 25px #9ad0ff,
+      0 0 50px #9ad0ff,
+      0 0 80px rgba(154,208,255,0.6);
+    margin: 20px 0;
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .patronus-name {
+    font-size: 2.2em;
+    color: #9ad0ff;
+    font-weight: bold;
+    margin: 15px 0;
+    letter-spacing: 3px;
+    text-shadow: 0 0 25px rgba(154,208,255,0.8);
+  }
+
+  /* Поля ввода */
+  .field { margin-bottom: 18px; }
+
+  .field label {
+    display: block;
+    color: #c9a227;
+    margin-bottom: 8px;
+    font-size: 0.95em;
+    letter-spacing: 1px;
+  }
+
+  .field select, .field input, .field textarea {
+    width: 100%;
+    padding: 12px 15px;
+    font-family: inherit;
+    font-size: 0.95em;
+    background: rgba(35,35,63,0.7);
+    border: 1px solid rgba(201,162,39,0.3);
+    color: #f4e4c1;
+    border-radius: 10px;
+    transition: all 0.3s;
+  }
+
+  .field select:focus, .field input:focus, .field textarea:focus {
+    outline: none;
+    border-color: #c9a227;
+    box-shadow: 0 0 15px rgba(201,162,39,0.3);
+  }
+
+  .center { text-align: center; }
+
+  /* Результат палочки и контактов */
+  .wand-result, .contact-result {
+    margin-top: 25px;
+    padding: 25px;
+    background: linear-gradient(135deg, rgba(35,35,63,0.9), rgba(26,26,46,0.9));
+    border: 2px solid #c9a227;
+    border-radius: 15px;
+    text-align: center;
+    animation: fadeIn 0.6s;
+    box-shadow:
+      0 0 30px rgba(201,162,39,0.3),
+      inset 0 0 20px rgba(201,162,39,0.05);
+  }
+
+  .wand-icon {
+    font-size: 3.5em;
+    margin-bottom: 15px;
+    filter: drop-shadow(0 0 20px rgba(201,162,39,0.8));
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .wand-title {
+    color: #c9a227;
+    font-size: 1.4em;
+    font-weight: bold;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+    text-shadow: 0 0 15px rgba(201,162,39,0.5);
+  }
+
+  .wand-text, .contact-text {
+    color: #ccc;
+    line-height: 1.7;
+    font-size: 0.95em;
+  }
+
+  .contact-text strong { color: #f4e4c1; }
+
+  /* Поиск */
+  .search-input {
+    width: 100%;
+    padding: 14px 18px;
+    background: rgba(26,26,46,0.8);
+    border: 1px solid rgba(201,162,39,0.3);
+    color: #f4e4c1;
+    font-family: inherit;
+    font-size: 1em;
+    border-radius: 25px;
+    margin-bottom: 25px;
+    transition: all 0.3s;
+  }
+
+  .search-input:focus {
+    outline: none;
+    border-color: #c9a227;
+    box-shadow: 0 0 20px rgba(201,162,39,0.3);
+  }
+
+  .search-input::placeholder { color: #888; }
+
+  /* Список заклинаний */
+  .spell-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 14px;
+  }
+
+  .spell-card {
+    background: linear-gradient(135deg, rgba(26,26,46,0.9), rgba(35,35,63,0.8));
+    border-left: 3px solid #c9a227;
+    border-radius: 10px;
+    padding: 18px;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .spell-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(201,162,39,0.1), transparent);
+    transition: left 0.5s;
+  }
+
+  .spell-card:hover::before { left: 100%; }
+
+  .spell-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 25px rgba(201,162,39,0.3);
+    border-left-color: #f4e4c1;
+  }
+
+  .spell-name {
+    color: #c9a227;
+    font-size: 1.15em;
+    font-weight: bold;
+    margin-bottom: 5px;
+    letter-spacing: 1px;
+    text-shadow: 0 0 10px rgba(201,162,39,0.4);
+  }
+
+  .spell-type {
+    color: #b8a882;
+    font-size: 0.72em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
+
+  .spell-desc {
+    color: #ccc;
+    font-size: 0.9em;
+    line-height: 1.5;
+  }
+
+  .empty-msg {
+    color: #888;
+    text-align: center;
+    padding: 25px;
+    grid-column: 1 / -1;
+    font-style: italic;
+  }
+
+  /* Подвал */
+  footer {
+    text-align: center;
+    padding: 30px 15px;
+    color: #666;
+    font-size: 0.85em;
+    border-top: 1px solid rgba(201,162,39,0.2);
+    margin-top: 40px;
+    letter-spacing: 1px;
+  }
+
+  footer strong {
+    color: #c9a227;
+    text-shadow: 0 0 10px rgba(201,162,39,0.4);
+  }
+
+  /* Адаптив */
+  @media (max-width: 600px) {
+    header h1 { font-size: 1.9em; letter-spacing: 2px; }
+    nav button { padding: 8px 14px; font-size: 0.8em; }
+    main { padding: 25px 12px; }
+    .box { padding: 20px; }
+    .result-title { font-size: 1.7em; }
+    .patronus-name { font-size: 1.7em; }
+    .crest { font-size: 4em; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>⚡ ХОГВАРТС ⚡</h1>
+  <p>«Не важно, что ты родился в мире маглов. Важно, что ты волшебник.»</p>
+  <p class="author">Автор: <strong>Фельцан Екатерина Анатольевна</strong></p>
+</header>
+
+<nav>
+  <button class="tab-btn active" data-tab="quiz"><span>Шляпа</span></button>
+  <button class="tab-btn" data-tab="patronus"><span>Патронус</span></button>
+  <button class="tab-btn" data-tab="wand"><span>Палочка</span></button>
+  <button class="tab-btn" data-tab="spells"><span>Заклинания</span></button>
+  <button class="tab-btn" data-tab="contacts"><span>Контакты</span></button>
+</nav>
+
+<main>
+
+  <section id="quiz" class="tab-section active">
+    <h2>Распределяющая шляпа</h2>
+    <div class="box" id="quiz-box"></div>
+  </section>
+
+  <section id="patronus" class="tab-section">
+    <h2>Тест на патронус</h2>
+    <div class="box" id="patronus-box"></div>
+  </section>
+
+  <section id="wand" class="tab-section">
+    <h2>Генератор палочки</h2>
+    <div class="box">
+      <div class="field">
+        <label>🪵 Древесина</label>
+        <select id="wand-wood">
+          <option>Дуб</option><option>Боярышник</option><option>Бузина</option>
+          <option>Тис</option><option>Падуб</option><option>Орех</option>
+          <option>Рябина</option><option>Ясень</option><option>Вишня</option>
+          <option>Клён</option><option>Груша</option><option>Ива</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>✨ Сердцевина</label>
+        <select id="wand-core">
+          <option>перо феникса</option>
+          <option>волос единорога</option>
+          <option>сердечная жила дракона</option>
+          <option>волос вейлы</option>
+          <option>усы кнезла</option>
+          <option>чешуя руноследа</option>
+          <option>перо гиппогрифа</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>📏 Длина</label>
+        <select id="wand-length">
+          <option>22 см</option><option>24 см</option><option>25 см</option>
+          <option>27 см</option><option>28 см</option><option>30 см</option>
+          <option>32 см</option><option>35 см</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>🌀 Гибкость</label>
+        <select id="wand-flex">
+          <option>хрупкая</option><option>жёсткая</option>
+          <option>умеренно гибкая</option><option>гибкая</option>
+          <option>податливая</option><option>непреклонная</option>
+        </select>
+      </div>
+      <div class="center">
+        <button class="btn" id="wand-btn">🪄 Создать палочку</button>
+      </div>
+      <div id="wand-result"></div>
+    </div>
+  </section>
+
+  <section id="spells" class="tab-section">
+    <h2>Энциклопедия заклинаний</h2>
+    <input type="text" class="search-input" id="spell-search" placeholder="🔍 Поиск заклинания...">
+    <div class="spell-list" id="spell-list"></div>
+  </section>
+
+  <section id="contacts" class="tab-section">
+    <h2>Мои контакты</h2>
+    <div class="box">
+      <div class="field">
+        <label>👤 ФИО</label>
+        <input type="text" id="contact-fio" value="Фельцан Екатерина Анатольевна">
+      </div>
+      <div class="field">
+        <label>📧 Email</label>
+        <input type="email" id="contact-email" placeholder="example@mail.com">
+      </div>
+      <div class="field">
+        <label>📱 Телефон</label>
+        <input type="tel" id="contact-phone" placeholder="+7 (999) 123-45-67">
+      </div>
+      <div class="field">
+        <label>✈️ Telegram</label>
+        <input type="text" id="contact-tg" placeholder="@username">
+      </div>
+      <div class="field">
+        <label>📝 О себе</label>
+        <textarea id="contact-about" rows="3" placeholder="Пара слов о вас..."></textarea>
+      </div>
+      <div class="center">
+        <button class="btn" id="contact-btn">💾 Сохранить</button>
+      </div>
+      <div id="contact-result"></div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  Сделано с ⚡ для фанатов. Все права принадлежат J.K. Rowling и Warner Bros.<br>
+  Автор: <strong>Фельцан Екатерина Анатольевна</strong>
+</footer>
+
+<script>
+(function() {
+  // ============ НАВИГАЦИЯ ============
+  var tabs = document.querySelectorAll('.tab-btn');
+  var sections = document.querySelectorAll('.tab-section');
+  for (var i = 0; i < tabs.length; i++) {
+    tabs[i].addEventListener('click', function() {
+      var target = this.getAttribute('data-tab');
+      for (var j = 0; j < tabs.length; j++) tabs[j].classList.remove('active');
+      for (var k = 0; k < sections.length; k++) sections[k].classList.remove('active');
+      this.classList.add('active');
+      document.getElementById(target).classList.add('active');
+    });
+  }
+
+  // ============ ШЛЯПА ============
+  var houseQ = [
+    { q: "Ты нашёл кошелёк с деньгами. Что сделаешь?", a: [
+      { t: "Верну владельцу", s: { hufflepuff: 2, gryffindor: 1 } },
+      { t: "Оставлю себе", s: { slytherin: 2 } },
+      { t: "Изучу, откуда он, потом отдам в полицию", s: { ravenclaw: 2 } },
+      { t: "Найду владельца через знакомых", s: { gryffindor: 2 } }
+    ]},
+    { q: "Какой предмет ближе?", a: [
+      { t: "Защита от тёмных искусств", s: { gryffindor: 2 } },
+      { t: "Зельеварение", s: { slytherin: 2 } },
+      { t: "История магии", s: { ravenclaw: 2 } },
+      { t: "Травология", s: { hufflepuff: 2 } }
+    ]},
+    { q: "Твой главный недостаток?", a: [
+      { t: "Вспыльчивость", s: { gryffindor: 2 } },
+      { t: "Амбициозность", s: { slytherin: 2 } },
+      { t: "Слишком много думаю", s: { ravenclaw: 2 } },
+      { t: "Слишком доверчив(а)", s: { hufflepuff: 2 } }
+    ]},
+    { q: "Если станешь невидимым на час?", a: [
+      { t: "Подшучу над друзьями", s: { gryffindor: 2 } },
+      { t: "Подслушаю секреты", s: { slytherin: 2 } },
+      { t: "Проберусь в запретную секцию", s: { ravenclaw: 2 } },
+      { t: "Помогу кому-то незаметно", s: { hufflepuff: 2 } }
+    ]},
+    { q: "Что важнее всего?", a: [
+      { t: "Смелость и честь", s: { gryffindor: 2 } },
+      { t: "Власть и успех", s: { slytherin: 2 } },
+      { t: "Мудрость и знания", s: { ravenclaw: 2 } },
+      { t: "Дружба и верность", s: { hufflepuff: 2 } }
+    ]}
+  ];
+
+  var houses = {
+    gryffindor: { name: "ГРИФФИНДОР", crest: "🦁", cls: "gryffindor", desc: "Смелость, отвага и рыцарство. Ты не боишься опасностей и готов встать на защиту слабых." },
+    slytherin: { name: "СЛИЗЕРИН", crest: "🐍", cls: "slytherin", desc: "Амбиции, хитрость и решительность. Ты умеешь добиваться своего и не сдаёшься." },
+    ravenclaw: { name: "КОГТЕВРАН", crest: "🦅", cls: "ravenclaw", desc: "Ум, находчивость и любовь к знаниям. Ты видишь суть вещей и любишь учиться." },
+    hufflepuff: { name: "ПУФФЕНДУЙ", crest: "🦡", cls: "hufflepuff", desc: "Трудолюбие, верность и доброта. Ты честен, предан и всегда помогаешь другим." }
+  };
+
+  var hCur = 0, hSc = { gryffindor: 0, slytherin: 0, ravenclaw: 0, hufflepuff: 0 };
+  var hBox = document.getElementById('quiz-box');
+
+  function renderHouse() {
+    if (hCur >= houseQ.length) { showHouse(); return; }
+    var q = houseQ[hCur];
+    var html = '<div class="question">' + q.q + '</div><div class="answers">';
+    for (var i = 0; i < q.a.length; i++) {
+      html += '<button data-i="' + i + '">' + q.a[i].t + '</button>';
+    }
+    html += '</div><div class="progress"><div class="progress-bar" style="width:' + ((hCur / houseQ.length) * 100) + '%"></div></div>';
+    html += '<p class="counter">Вопрос ' + (hCur + 1) + ' из ' + houseQ.length + '</p>';
+    hBox.innerHTML = html;
+    var btns = hBox.querySelectorAll('.answers button');
+    for (var j = 0; j < btns.length; j++) {
+      btns[j].addEventListener('click', function() {
+        var idx = parseInt(this.getAttribute('data-i'));
+        var ans = q.a[idx];
+        for (var key in ans.s) hSc[key] += ans.s[key];
+        hCur++;
+        renderHouse();
+      });
+    }
+  }
+
+  function showHouse() {
+    var w = 'gryffindor';
+    for (var k in hSc) if (hSc[k] > hSc[w]) w = k;
+    var h = houses[w];
+    hBox.innerHTML = '<div class="result">' +
+      '<div class="crest">' + h.crest + '</div>' +
+      '<div class="result-title ' + h.cls + '">' + h.name + '</div>' +
+      '<div class="result-desc">' + h.desc + '</div>' +
+      '<p class="scores">🦁 ' + hSc.gryffindor + ' | 🐍 ' + hSc.slytherin + ' | 🦅 ' + hSc.ravenclaw + ' | 🦡 ' + hSc.hufflepuff + '</p>' +
+      '<button class="btn" id="restart-house">Пройти заново</button></div>';
+    document.getElementById('restart-house').addEventListener('click', function() {
+      hCur = 0; hSc = { gryffindor: 0, slytherin: 0, ravenclaw: 0, hufflepuff: 0 };
+      renderHouse();
+    });
+  }
+  renderHouse();
+
+  // ============ ПАТРОНУС ============
+  var patQ = [
+      { q: "Воспоминание для патронуса?", a: [
+      { t: "Первый полёт на метле", s: { phoenix: 2, dragon: 1 } },
+      { t: "Тёплый вечер с семьёй", s: { otter: 2, doe: 1 } },
+      { t: "Помог другу", s: { stag: 2, wolf: 1 } },
+      { t: "Победа в битве", s: { lion: 2, dragon: 1 } }
+    ]},
+    { q: "Что ценишь больше всего?", a: [
+      { t: "Свободу", s: { wolf: 2, phoenix: 1 } },
+      { t: "Верность", s: { stag: 2, otter: 1 } },
+      { t: "Мудрость", s: { owl: 2, doe: 1 } },
+      { t: "Силу", s: { dragon: 2, lion: 1 } }
+    ]},
+    { q: "В опасности ты...", a: [
+      { t: "Защищаю близких", s: { lion: 2, wolf: 1 } },
+      { t: "Сохраняю спокойствие", s: { owl: 2, phoenix: 1 } },
+      { t: "Действую по интуиции", s: { otter: 2, doe: 1 } },
+      { t: "Стою до конца", s: { stag: 2, dragon: 1 } }
+    ]},
+    { q: "Ближе место?", a: [
+      { t: "Запретный лес", s: { wolf: 2, stag: 1 } },
+      { t: "Чёрное озеро", s: { otter: 2, doe: 1 } },
+      { t: "Башни Хогвартса", s: { owl: 2, phoenix: 1 } },
+      { t: "Горы и небо", s: { dragon: 2, lion: 1 } }
+    ]},
+    { q: "Твой характер?", a: [
+      { t: "Вспыльчивый, но благородный", s: { lion: 2, dragon: 1 } },
+      { t: "Тихий, но верный", s: { doe: 2, stag: 1 } },
+      { t: "Любопытный и живой", s: { otter: 2, owl: 1 } },
+      { t: "Одинокий, но свободный", s: { wolf: 2, phoenix: 1 } }
+    ]}
+  ];
+
+  var animals = {
+    stag:    { name: "Олень",  emoji: "🦌", desc: "Символ благородства, защиты и верной дружбы. Оберегает тех, кто тебе дорог." },
+    otter:   { name: "Выдра",  emoji: "🦦", desc: "Игривость, лёгкость и жизнерадостность. Ты находишь радость даже в тёмные времена." },
+    phoenix: { name: "Феникс", emoji: "🔥", desc: "Символ возрождения и надежды. Ты поднимаешься из пепла и даришь свет другим." },
+    wolf:    { name: "Волк",   emoji: "🐺", desc: "Независимость и верность своим. Ты сильный одиночка, но за своих стоишь насмерть." },
+    doe:     { name: "Лань",   emoji: "🦌", desc: "Любовь, нежность и тихая сила. Ты защищаешь тех, кого любишь." },
+    owl:     { name: "Сова",   emoji: "🦉", desc: "Мудрость и проницательность. Ты видишь суть вещей и находишь выход." },
+    dragon:  { name: "Дракон", emoji: "🐉", desc: "Невероятная сила и решимость. Ты сокрушаешь преграды и не боишься никого." },
+    lion:    { name: "Лев",    emoji: "🦁", desc: "Храбрость и благородство. Ты настоящий защитник с огнём справедливости в сердце." }
+  };
+
+  var pCur = 0, pSc = { stag: 0, otter: 0, phoenix: 0, wolf: 0, doe: 0, owl: 0, dragon: 0, lion: 0 };
+  var pBox = document.getElementById('patronus-box');
+
+  function renderPat() {
+    if (pCur >= patQ.length) { showPat(); return; }
+    var q = patQ[pCur];
+    var html = '<div class="question">' + q.q + '</div><div class="answers">';
+    for (var i = 0; i < q.a.length; i++) {
+      html += '<button data-i="' + i + '">' + q.a[i].t + '</button>';
+    }
+    html += '</div><div class="progress"><div class="progress-bar" style="width:' + ((pCur / patQ.length) * 100) + '%"></div></div>';
+    html += '<p class="counter">Вопрос ' + (pCur + 1) + ' из ' + patQ.length + '</p>';
+    pBox.innerHTML = html;
+    var btns = pBox.querySelectorAll('.answers button');
+    for (var j = 0; j < btns.length; j++) {
+      btns[j].addEventListener('click', function() {
+        var idx = parseInt(this.getAttribute('data-i'));
+        var ans = q.a[idx];
+        for (var key in ans.s) pSc[key] += ans.s[key];
+        pCur++;
+        renderPat();
+      });
+    }
+  }
+
+  function showPat() {
+    var w = 'stag';
+    for (var k in pSc) if (pSc[k] > pSc[w]) w = k;
+    var a = animals[w];
+    pBox.innerHTML = '<div class="result">' +
+      '<div class="patronus-emoji">' + a.emoji + '</div>' +
+      '<div class="patronus-name">' + a.name + '</div>' +
+      '<div class="result-desc">' + a.desc + '</div>' +
+      '<button class="btn" id="restart-pat">Пройти заново</button></div>';
+    document.getElementById('restart-pat').addEventListener('click', function() {
+      pCur = 0;
+      pSc = { stag: 0, otter: 0, phoenix: 0, wolf: 0, doe: 0, owl: 0, dragon: 0, lion: 0 };
+      renderPat();
+    });
+  }
+  renderPat();
+
+  // ============ ПАЛОЧКА ============
+  var woodDesc = {
+    "Дуб": "Символ силы, верности и надёжности. Для волшебников с твёрдым характером.",
+    "Боярышник": "Выбирает сложных, противоречивых натур. Подходит целителям.",
+    "Бузина": "Редчайшая и самая могущественная. Выбирает лишь тех, кто способен нести великую силу.",
+    "Тис": "Символ жизни и смерти. Выбирает волшебников, способных на великие дела.",
+    "Падуб": "Верная спутница храбрецов. Защищает владельца и помогает преодолевать трудности.",
+    "Орех": "Любит изобретательных. Раскрывает потенциал в руках мыслящих нестандартно.",
+    "Рябина": "Надёжный защитник. Отлично работает в защитных заклинаниях.",
+    "Ясень": "Выбор сильных духом. Верна хозяину и не терпит предательства.",
+    "Вишня": "Редкость. Выбирает волшебников с яркой, страстной натурой.",
+    "Клён": "Для искателей приключений. Помогает в путешествиях и новых начинаниях.",
+    "Груша": "Тёплая и щедрая. Выбирает добрых, отзывчивых волшебников.",
+    "Ива": "Символ мудрости и исцеления. Идеальна для тех, кто помогает другим."
+  };
+
+  var coreDesc = {
+    "перо феникса": "Редчайшая сердцевина. Способна на величайшую магию, но непредсказуема.",
+    "волос единорога": "Самая чистая и верная. Редко даёт сбои и всегда служит добру.",
+    "сердечная жила дракона": "Мощная и своенравная. Даёт сильную магию, но требует уважения.",
+    "волос вейлы": "Изящная и капризная. Особенно сильна в чарах и очаровании.",
+    "усы кнезла": "Необычная сердцевина. Отлично работает в трансфигурации.",
+    "чешуя руноследа": "Редкая сердцевина. Помогает в изучении древних рун.",
+    "перо гиппогрифа": "Гордая сердцевина. Выбирает независимых и свободолюбивых."
+  };
+
+  document.getElementById('wand-btn').addEventListener('click', function() {
+    var wood = document.getElementById('wand-wood').value;
+    var core = document.getElementById('wand-core').value;
+    var len = document.getElementById('wand-length').value;
+    var flex = document.getElementById('wand-flex').value;
+    document.getElementById('wand-result').innerHTML =
+      '<div class="wand-result">' +
+        '<div class="wand-icon">🪄</div>' +
+        '<div class="wand-title">' + wood + ', ' + len + '</div>' +
+        '<div class="wand-text">' +
+          '<p><strong>Сердцевина:</strong> ' + core + '</p>' +
+          '<p><strong>Гибкость:</strong> ' + flex + '</p><br>' +
+          '<p>' + woodDesc[wood] + '</p><br>' +
+          '<p>' + coreDesc[core] + '</p>' +
+        '</div>' +
+      '</div>';
+  });
+
+  // ============ ЗАКЛИНАНИЯ ============
+  var spells = [
+    { n: "Экспеллиармус", t: "Боевое", d: "Обезоруживающее заклинание." },
+    { n: "Люмос", t: "Чары", d: "Создаёт свет на конце палочки." },
+    { n: "Нокс", t: "Чары", d: "Гасит свет Люмоса." },
+    { n: "Алохомора", t: "Чары", d: "Открывает замки и двери." },
+    { n: "Вингардиум Левиоса", t: "Чары", d: "Заставляет предмет левитировать." },
+    { n: "Петрификус Тоталус", t: "Боевое", d: "Обездвиживает противника." },
+    { n: "Ридикулус", t: "Боевое", d: "Противодействует боггарту." },
+    { n: "Экспекто Патронум", t: "Защитное", d: "Вызывает патронуса." },
+    { n: "Авада Кедавра", t: "Тёмное", d: "Убивающее проклятие." },
+    { n: "Круцио", t: "Тёмное", d: "Проклятие боли." },
+    { n: "Империо", t: "Тёмное", d: "Проклятие подчинения." },
+    { n: "Легилименс", t: "Ментальное", d: "Чтение мыслей." },
+    { n: "Окклюменс", t: "Ментальное", d: "Защита разума." },
+    { n: "Репаро", t: "Бытовое", d: "Восстанавливает предметы." },
+    { n: "Агуаменти", t: "Чары", d: "Создаёт поток воды." },
+    { n: "Депульсо", t: "Боевое", d: "Отбрасывает противника." },
+    { n: "Ступефай", t: "Боевое", d: "Оглушающее заклинание." },
+    { n: "Протего", t: "Защитное", d: "Создаёт магический щит." },
+    { n: "Фините Инкантатем", t: "Бытовое", d: "Прекращает действие заклинаний." },
+    { n: "Люмос Максима", t: "Чары", d: "Мощная вспышка света." }
+  ];
+
+  var sList = document.getElementById('spell-list');
+  var sSearch = document.getElementById('spell-search');
+
+  function renderSpells(filter) {
+    var f = (filter || '').toLowerCase();
+    var html = '';
+    var count = 0;
+    for (var i = 0; i < spells.length; i++) {
+      var s = spells[i];
+      if (s.n.toLowerCase().indexOf(f) !== -1 ||
+          s.d.toLowerCase().indexOf(f) !== -1 ||
+          s.t.toLowerCase().indexOf(f) !== -1) {
+        html += '<div class="spell-card">' +
+          '<div class="spell-name">' + s.n + '</div>' +
+          '<div class="spell-type">' + s.t + '</div>' +
+          '<div class="spell-desc">' + s.d + '</div>' +
+        '</div>';
+        count++;
+      }
+    }
+    if (count === 0) html = '<p class="empty-msg">Заклинаний не найдено...</p>';
+    sList.innerHTML = html;
+  }
+
+  sSearch.addEventListener('input', function() { renderSpells(this.value); });
+  renderSpells('');
+
+  // ============ КОНТАКТЫ ============
+  document.getElementById('contact-btn').addEventListener('click', function() {
+    var fio = document.getElementById('contact-fio').value || '—';
+    var email = document.getElementById('contact-email').value || '—';
+    var phone = document.getElementById('contact-phone').value || '—';
+    var tg = document.getElementById('contact-tg').value || '—';
+    var about = document.getElementById('contact-about').value || '—';
+    document.getElementById('contact-result').innerHTML =
+      '<div class="contact-result">' +
+        '<div class="contact-text">' +
+          '<p><strong>ФИО:</strong> ' + fio + '</p>' +
+          '<p><strong>Email:</strong> ' + email + '</p>' +
+          '<p><strong>Телефон:</strong> ' + phone + '</p>' +
+          '<p><strong>Telegram:</strong> ' + tg + '</p>' +
+          '<p><strong>О себе:</strong> ' + about + '</p>' +
+        '</div>' +
+      '</div>';
+  });
+
+})();
+</script>
+</body>
+</html>
